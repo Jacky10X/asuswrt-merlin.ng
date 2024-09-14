@@ -50,8 +50,8 @@ dynamic_include_js('/calendar/jquery-ui.js');
 })();
 var wlc_band = httpApi.nvramGet(['wlc_band']).wlc_band;
 var assassinMode_enable = (function(){
-if((system.modelName == 'TUF-AX3000'
-|| system.modelName == 'RT-AX58U' || system.modelName == 'RT-AX3000')
+if(system.modelName == 'TUF-AX3000'
+&& system.territoryCode.indexOf('CN') != -1
 && httpApi.nvramGet(['location_code']).location_code == 'XX'){
 return true
 }
@@ -73,7 +73,7 @@ var smart_connect_mode = '';
 function getVariable(){
 var _array = new Array('sw_mode', 'wps_enable');
 var _ssid = new Array();
-if(system.modelName == 'TUF-AX3000' || system.modelName == 'RT-AX58U' || system.modelName == 'RT-AX3000') {
+if(system.modelName == 'TUF-AX3000' && system.territoryCode.indexOf('CN') != -1){
 _array.push('location_code');
 }
 if(system.smartConnectSupport){
@@ -375,7 +375,7 @@ $('#wl_settings_field').html(code);
 $('#apply_button').hide();
 return true;
 }
-if(system.modelName == 'TUF-AX3000' || system.modelName == 'RT-AX58U' || system.modelName == 'RT-AX3000'){
+if(system.modelName == 'TUF-AX3000' && system.territoryCode.indexOf('CN') != -1){
 document.getElementById('assassin_mode').style.display= '';
 }
 if(system.smartConnectSupport && variable.smart_connect_x != '0'){
