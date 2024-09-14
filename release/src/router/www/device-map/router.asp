@@ -53,7 +53,7 @@
 var wlc_band = httpApi.nvramGet(['wlc_band']).wlc_band;
 var assassinMode_enable = (function(){
 	if(system.modelName == 'TUF-AX3000' 
-	&& system.territoryCode.indexOf('CN') != -1 
+	&& system.territoryCode.indexOf('AA') != -1 
 	&& httpApi.nvramGet(['location_code']).location_code == 'XX'){
 		return true
 	}
@@ -79,7 +79,7 @@ function getVariable(){
 	var _array = new Array('sw_mode', 'wps_enable');
 	var _ssid = new Array();
 
-	if(system.modelName == 'TUF-AX3000' && system.territoryCode.indexOf('CN') != -1){
+	if(system.modelName == 'TUF-AX3000' && system.territoryCode.indexOf('AA') != -1){
 		_array.push('location_code');
 	}
 
@@ -411,7 +411,7 @@ function genElement(){
 	}
 
 	// part for Assassin mode
-	if(system.modelName == 'TUF-AX3000' && system.territoryCode.indexOf('CN') != -1){
+	if(system.modelName == 'TUF-AX3000' && system.territoryCode.indexOf('AA') != -1){
 		document.getElementById('assassin_mode').style.display= '';
 	}
 
@@ -1441,7 +1441,7 @@ function enableSmartConnect(value){
 									return true;
 								},
 								function() {
-									variable.location_code = 'CN';
+									variable.location_code = 'AA';
 									apply('reboot');
 									//document.internetForm.submit();
 									return true;
